@@ -10,7 +10,7 @@ export class LayoutEffects {
   setMobile = createEffect(() => {
     return this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
       filter((result) => result.matches),
-      map(() => LayoutActions.setWidth({ width: 'mobile' }))
+      map(() => LayoutActions.setWidth({ width: `mobile` }))
     );
   });
 
@@ -19,7 +19,7 @@ export class LayoutEffects {
       .observe([Breakpoints.Small, Breakpoints.Medium])
       .pipe(
         filter((result) => result.matches),
-        map(() => LayoutActions.setWidth({ width: 'tablet' }))
+        map(() => LayoutActions.setWidth({ width: `tablet` }))
       );
   });
 
@@ -28,7 +28,7 @@ export class LayoutEffects {
       .observe([Breakpoints.Large, Breakpoints.XLarge])
       .pipe(
         filter((result) => result.matches),
-        map(() => LayoutActions.setWidth({ width: 'desktop' }))
+        map(() => LayoutActions.setWidth({ width: `desktop` }))
       );
   });
 
