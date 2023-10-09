@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+dictionary-web-app
+dictionary-web-app-figma
