@@ -1,0 +1,10 @@
+<div *ngrxLet="scheme$ as scheme" class="container" cdkMenu [ngClass]="scheme">
+  <button
+    *ngFor="let font of fonts"
+    cdkMenuItemRadio
+    [ngStyle]="{ fontFamily: fontCssName(font) }"
+    (cdkMenuItemTriggered)="onSelected(font)"
+  >
+    {{ font }}
+  </button>
+</div>

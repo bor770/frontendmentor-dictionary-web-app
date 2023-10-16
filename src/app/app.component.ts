@@ -24,6 +24,8 @@ import { SearchComponent } from './search/search.component';
     `./styles/mobile.app.component.css`,
     `./styles/tablet.app.component.css`,
     `./styles/desktop.app.component.css`,
+    `./styles/dark.app.component.css`,
+    `./styles/light.app.component.css`,
   ],
   templateUrl: './app.component.html',
 })

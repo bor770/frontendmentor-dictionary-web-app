@@ -1,4 +1,8 @@
-<div *ngrxLet="width$ as width" [ngClass]="width">
+<div
+  *ngrxLet="{ font: font$, scheme: scheme$, width: width$ } as observables"
+  [ngClass]="[observables.scheme, observables.width]"
+  [ngStyle]="{ fontFamily: observables.font }"
+>
   <header>
     <app-header></app-header>
   </header>

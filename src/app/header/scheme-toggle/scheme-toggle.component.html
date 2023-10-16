@@ -1,1 +1,15 @@
-<p>scheme-toggle works!</p>
+<div
+  *ngrxLet="{ scheme: scheme$, width: width$ } as observables"
+  [ngClass]="[observables.scheme, observables.width]"
+>
+  <img
+    alt="Scheme Toggle"
+    [src]="
+      '../../../assets/images/scheme-toggle-' +
+      observables.width +
+      '-' +
+      observables.scheme +
+      '.svg'
+    "
+  />
+</div>

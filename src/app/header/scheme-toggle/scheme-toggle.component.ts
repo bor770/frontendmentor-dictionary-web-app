@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { LetDirective } from '@ngrx/component';
+
+import { BaseComponent } from '../../shared/base/base.component';
 
 @Component({
+  imports: [CommonModule, LetDirective],
   selector: 'app-scheme-toggle',
   standalone: true,
-  imports: [CommonModule],
+  styleUrls: ['./scheme-toggle.component.css'],
   templateUrl: './scheme-toggle.component.html',
-  styleUrls: ['./scheme-toggle.component.css']
 })
-export class SchemeToggleComponent {
-
-}
+export class SchemeToggleComponent extends BaseComponent {}

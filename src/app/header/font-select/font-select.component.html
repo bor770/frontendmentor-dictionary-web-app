@@ -1,1 +1,16 @@
-<p>font-select works!</p>
+<button
+  *ngrxLet="{ font: font$, fontName: fontName$, width: width$ } as observables"
+  [cdkMenuTriggerFor]="menu"
+  [cdkMenuPosition]="position"
+  class="container"
+  [ngClass]="observables.width"
+>
+  <span class="name" [ngStyle]="{ fontFamily: observables.font }">{{
+    observables.fontName
+  }}</span>
+  <img src="../../../assets/images/icon-arrow-down.svg" alt="Arrow Down" />
+</button>
+
+<ng-template #menu>
+  <app-font-menu [@menu]></app-font-menu>
+</ng-template>

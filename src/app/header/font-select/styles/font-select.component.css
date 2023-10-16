@@ -1,0 +1,16 @@
+.container {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  user-select: none;
+}
+
+button {
+  color: inherit;
+}
+
+.name {
+  font-weight: 700;
+}
