@@ -1,10 +1,3 @@
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
@@ -17,25 +10,7 @@ import { Font } from '../../shared/font/font.model';
 import { FontMenuComponent } from './font-menu/font-menu.component';
 import * as FontSelectors from '../../shared/font/store/font.selectors';
 
-const TIMING = 500;
-const TRANSLATE_Y_ARGUMENT = `-16.06rem`;
-
 @Component({
-  animations: [
-    trigger(`menu`, [
-      state(`in`, style({ transform: `translateY(0)` })),
-      transition(`void => *`, [
-        style({ transform: `translateY(${TRANSLATE_Y_ARGUMENT})` }),
-        animate(TIMING),
-      ]),
-      transition(`* => void`, [
-        animate(
-          TIMING,
-          style({ transform: `translateY(${TRANSLATE_Y_ARGUMENT})` })
-        ),
-      ]),
-    ]),
-  ],
   imports: [CommonModule, CdkMenuModule, LetDirective, FontMenuComponent],
   selector: 'app-font-select',
   standalone: true,
