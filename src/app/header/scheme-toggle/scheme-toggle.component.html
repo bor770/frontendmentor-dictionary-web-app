@@ -1,6 +1,7 @@
-<div
+<button
   *ngrxLet="{ scheme: scheme$, width: width$ } as observables"
   [ngClass]="[observables.scheme, observables.width]"
+  (click)="onToggle()"
 >
   <img
     alt="Scheme Toggle"
@@ -12,4 +13,4 @@
       '.svg'
     "
   />
-</div>
+</button>

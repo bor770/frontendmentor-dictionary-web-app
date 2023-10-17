@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { LetDirective } from '@ngrx/component';
 
 import { BaseComponent } from '../../shared/base/base.component';
+import * as SchemeActions from '../../shared/scheme/store/scheme.actions';
 
 @Component({
   imports: [CommonModule, LetDirective],
@@ -11,4 +12,8 @@ import { BaseComponent } from '../../shared/base/base.component';
   styleUrls: ['./scheme-toggle.component.css'],
   templateUrl: './scheme-toggle.component.html',
 })
-export class SchemeToggleComponent extends BaseComponent {}
+export class SchemeToggleComponent extends BaseComponent {
+  onToggle() {
+    this.store.dispatch(SchemeActions.toggle());
+  }
+}
