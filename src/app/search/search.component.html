@@ -1,1 +1,15 @@
-<p>search works!</p>
+<form
+  *ngrxLet="{ scheme: scheme$, width: width$ } as observables"
+  [formGroup]="form"
+  [ngClass]="[observables.scheme, observables.width]"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="search-box">
+    <input
+      formControlName="word"
+      placeholder="Search for any word…"
+      type="text"
+    />
+    <img src="../../assets/images/icon-search.svg" alt="Search Icon" />
+  </div>
+</form>

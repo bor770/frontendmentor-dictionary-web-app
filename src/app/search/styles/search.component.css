@@ -1,0 +1,38 @@
+form.ng-invalid.ng-submitted::after {
+  color: #ff2525;
+  content: "Whoops, can’t be empty…";
+  display: block;
+  margin-top: 8px;
+}
+
+.search-box {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  display: flex;
+  padding-left: 1.5rem;
+}
+
+.search-box:focus-within {
+  border-color: #a445ed;
+}
+
+.ng-invalid.ng-submitted .search-box {
+  border-color: #ff2525;
+}
+
+input {
+  background: transparent;
+  border: none;
+  caret-color: #a445ed;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  outline: none;
+  width: -webkit-fill-available;
+}
+
+input::placeholder {
+  font-weight: 700;
+  opacity: 0.25;
+}

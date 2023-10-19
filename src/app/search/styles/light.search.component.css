@@ -1,0 +1,7 @@
+.light .search-box {
+  background: #f4f4f4;
+}
+
+.light input::placeholder {
+  color: #2d2d2d;
+}
