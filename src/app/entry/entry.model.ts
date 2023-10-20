@@ -1,4 +1,21 @@
-export type ApiResponseEntry = {
+export type EntryError = { message: string; resolution: string; title: string };
+
+export type ApiResponseError = { error: EntryError };
+
+export type EntryValue = {
+  audio: string;
+  meanings: {
+    antonyms: string[];
+    definitions: { definition: string; example: string }[];
+    partOfSpeech: string;
+    synonyms: string[];
+  }[];
+  phonetic: string;
+  sourceUrl: string;
+  word: string;
+};
+
+export type ApiResponseValue = {
   meanings: {
     antonyms: string[];
     definitions: { definition: string; example: string }[];
@@ -10,7 +27,3 @@ export type ApiResponseEntry = {
   sourceUrls: string[];
   word: string;
 }[];
-
-export type ApiResponseError = {
-  error: { message: string; resolution: string; title: string };
-};
