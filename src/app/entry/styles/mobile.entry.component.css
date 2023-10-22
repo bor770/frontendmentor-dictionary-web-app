@@ -1,0 +1,12 @@
+.mobile h1 {
+  font-size: 2rem;
+}
+
+.mobile .phonetic {
+  font-size: 1.12rem;
+  line-height: 133.33%;
+}
+
+.mobile .play {
+  width: 3rem;
+}

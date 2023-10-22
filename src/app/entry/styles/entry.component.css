@@ -1,0 +1,35 @@
+header {
+  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "word     audio"
+    "phonetic audio";
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  row-gap: 8px;
+}
+
+h1 {
+  grid-area: word;
+}
+
+.phonetic {
+  color: #a445ed;
+  font-family: var(--font-family-sans-serif);
+  grid-area: phonetic;
+}
+
+.audio {
+  grid-area: audio;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+}
+
+.play {
+  display: block;
+}

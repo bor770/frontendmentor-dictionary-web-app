@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,11 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { LetDirective } from '@ngrx/component';
-import { Subscription } from 'rxjs';
 
 import { BaseComponent } from '../shared/base/base.component';
 import * as EntryActions from '../entry/store/entry.actions';
-import * as EntrySelectors from '../entry/store/entry.selectors';
 
 @Component({
   imports: [CommonModule, LetDirective, ReactiveFormsModule],
@@ -28,11 +26,7 @@ import * as EntrySelectors from '../entry/store/entry.selectors';
   ],
   templateUrl: './search.component.html',
 })
-export class SearchComponent
-  extends BaseComponent
-  implements OnDestroy, OnInit
-{
-  entrySubscription: Subscription;
+export class SearchComponent extends BaseComponent implements OnInit {
   form: FormGroup;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
 
@@ -42,21 +36,15 @@ export class SearchComponent
     this.form = new FormGroup({
       word: new FormControl(null, Validators.required),
     });
-
-    this.entrySubscription = this.store
-      .select(EntrySelectors.selectState)
-      .subscribe(() => {
-        this.formGroupDirective.resetForm(this.form.value);
-      });
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      this.store.dispatch(EntryActions.fetch({ word: this.form.value.word }));
-    }
-  }
+    const form = this.form;
+    const value = form.value;
 
-  ngOnDestroy(): void {
-    this.entrySubscription.unsubscribe();
+    if (form.valid) {
+      this.store.dispatch(EntryActions.fetch({ word: value.word }));
+      this.formGroupDirective.resetForm(value);
+    }
   }
 }

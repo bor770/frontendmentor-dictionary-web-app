@@ -1,6 +1,6 @@
-export const fonts = [`Sans Serif`, `Serif`, `Mono`] as const;
+export const fonts = [`Sans Serif`, `Serif`, `Monospace`] as const;
 
 export type Font = (typeof fonts)[number];
 
 export const fontCssName = (fontName: Font) =>
-  `var(--font-${fontName.toLowerCase().split(` `).join(`-`)})`;
+  `var(--font-family-${fontName.toLowerCase().split(` `).join(`-`)})`;

@@ -1,4 +1,67 @@
-<div
-  *ngrxLet="{ scheme: scheme$, width: width$ } as observables"
+<article
+  *ngrxLet="{
+    error: error$,
+    scheme: scheme$,
+    value: value$,
+    width: width$
+  } as observables"
   [ngClass]="[observables.scheme, observables.width]"
-></div>
+>
+  <ng-container *ngIf="observables.value as value">
+    <header>
+      <h1>{{ value.word }}</h1>
+      <span class="phonetic">{{ value.phonetic }}</span>
+      <div *ngIf="value.audio as audio" class="audio">
+        <audio #audio [src]="audio"></audio>
+        <button
+          (click)="play()"
+          (mouseenter)="onHover()"
+          (mouseleave)="onHover()"
+        >
+          <img class="play" alt="Play Icon" [src]="imgSrc()" />
+        </button>
+      </div>
+    </header>
+    <ul>
+      <li *ngFor="let meaning of value.meanings">
+        <h2>{{ meaning.partOfSpeech }}</h2>
+        <section class="meaning">
+          <h3>Meaning</h3>
+          <ul>
+            <li *ngFor="let definition of meaning.definitions">
+              <p class="definition">{{ definition.definition }}</p>
+              <p class="example">{{ definition.example }}</p>
+            </li>
+          </ul>
+        </section>
+        <ng-container *ngrxLet="meaning.synonyms as synonyms">
+          <section *ngIf="synonyms[0]" class="synonyms">
+            <h3>Synonyms</h3>
+            <ul>
+              <li *ngFor="let synonym of synonyms">{{ synonym }}</li>
+            </ul>
+          </section>
+        </ng-container>
+        <ng-container *ngrxLet="meaning.antonyms as antonyms">
+          <section *ngIf="antonyms[0]" class="antonyms">
+            <h3>Synonyms</h3>
+            <ul>
+              <li *ngFor="let antonym of antonyms">{{ antonym }}</li>
+            </ul>
+          </section>
+        </ng-container>
+      </li>
+    </ul>
+    <br />
+    <footer *ngrxLet="value.sourceUrl as source">
+      <h2>Source</h2>
+      <a [href]="source" target="_blank"
+        >{{ source }}
+        <img
+          src="../../assets/images/icon-new-window.svg"
+          alt="New Window Icon"
+        />
+      </a>
+    </footer>
+  </ng-container>
+</article>

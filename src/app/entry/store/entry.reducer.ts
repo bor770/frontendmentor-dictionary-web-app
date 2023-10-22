@@ -27,7 +27,7 @@ export const reducer = createReducer(
       value: {
         audio: action.value[0].phonetics.filter(
           (phonetic) => !!phonetic.audio
-        )[0].audio,
+        )[0]?.audio,
         meanings: action.value[0].meanings,
         phonetic: action.value[0].phonetic,
         sourceUrl: action.value[0].sourceUrls[0],
