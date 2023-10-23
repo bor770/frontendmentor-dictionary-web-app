@@ -14,7 +14,7 @@
       <div *ngIf="value.audio as audio" class="audio">
         <audio #audio [src]="audio"></audio>
         <button
-          (click)="play()"
+          (click)="onPlay()"
           (mouseenter)="onHover()"
           (mouseleave)="onHover()"
         >
@@ -22,34 +22,65 @@
         </button>
       </div>
     </header>
-    <ul>
+    <ul class="parts">
       <li *ngFor="let meaning of value.meanings">
-        <h2>{{ meaning.partOfSpeech }}</h2>
+        <h2 class="part">{{ meaning.partOfSpeech }}</h2>
         <section class="meaning">
-          <h3>Meaning</h3>
-          <ul>
-            <li *ngFor="let definition of meaning.definitions">
-              <p class="definition">{{ definition.definition }}</p>
-              <p class="example">{{ definition.example }}</p>
+          <h3 class="meaning-heading">Meaning</h3>
+          <ul class="meanings">
+            <li
+              *ngFor="let definition of meaning.definitions"
+              class="meanings-item"
+            >
+              <div class="meanings-definition">
+                <p class="definition">{{ definition.definition }}</p>
+                <p *ngIf="definition.example as example" class="example">
+                  "{{ example }}"
+                </p>
+              </div>
             </li>
           </ul>
         </section>
-        <ng-container *ngrxLet="meaning.synonyms as synonyms">
-          <section *ngIf="synonyms[0]" class="synonyms">
+        <!-- <ng-container *ngrxLet="meaning.synonyms as synonyms">
+          <section *ngIf="synonyms[0]" class="nyms">
             <h3>Synonyms</h3>
-            <ul>
-              <li *ngFor="let synonym of synonyms">{{ synonym }}</li>
-            </ul>
+            <nav>
+              <ul class="nyms-list">
+                <li *ngFor="let synonym of synonyms" class="nyms-item">
+                  {{ synonym }}
+                </li>
+              </ul>
+            </nav>
           </section>
         </ng-container>
         <ng-container *ngrxLet="meaning.antonyms as antonyms">
-          <section *ngIf="antonyms[0]" class="antonyms">
-            <h3>Synonyms</h3>
-            <ul>
-              <li *ngFor="let antonym of antonyms">{{ antonym }}</li>
-            </ul>
+          <section *ngIf="antonyms[0]" class="nyms">
+            <h3>Antonyms</h3>
+            <nav>
+              <ul class="nyms-list">
+                <li *ngFor="let antonym of antonyms" class="nyms-item">
+                  {{ antonym }}
+                </li>
+              </ul>
+            </nav>
           </section>
-        </ng-container>
+        </ng-container> -->
+        <ul>
+          <li *ngFor="let nym of nyms">
+            <ng-container *ngrxLet="meaning[nym] as nyms">
+              <section *ngIf="nyms[0]" class="nyms">
+                <h3>{{ nym | titlecase }}</h3>
+                <nav>
+                  <ul class="nyms-list">
+                    <li *ngFor="let nym of nyms" class="nyms-item">
+                      {{ nym }}
+                    </li>
+                  </ul>
+                </nav>
+              </section>
+            </ng-container>
+          </li>
+        </ul>
       </li>
     </ul>
     <br />

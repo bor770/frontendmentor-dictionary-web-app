@@ -1,3 +1,11 @@
+.mobile {
+  font-size: 0.94rem;
+}
+
+.mobile header {
+  margin-bottom: 1.81rem;
+}
+
 .mobile h1 {
   font-size: 2rem;
 }
@@ -9,4 +17,33 @@
 
 .mobile .play {
   width: 3rem;
+}
+
+.mobile .parts {
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mobile .part {
+  font-size: 1.12rem;
+  gap: 1rem;
+  margin-bottom: 1.94rem;
+}
+
+.mobile h3 {
+  font-size: 1rem;
+}
+
+.mobile .meaning-heading {
+  margin-bottom: 1.06rem;
+}
+
+.mobile .meanings-item {
+  line-height: 160%;
+}
+
+.mobile .nyms {
+  font-size: 1rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }

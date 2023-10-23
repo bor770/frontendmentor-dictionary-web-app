@@ -9,7 +9,7 @@
 }
 
 :root {
-  --font-family-monospace: "Inconsolata", monospace;
+  --font-family-mono: "Inconsolata", monospace;
   --font-family-sans-serif: "Inter", sans-serif;
   --font-family-serif: "Lora", serif;
 }

@@ -4,7 +4,6 @@ header {
   grid-template-areas:
     "word     audio"
     "phonetic audio";
-  grid-template-columns: auto auto;
   justify-content: space-between;
   row-gap: 8px;
 }
@@ -32,4 +31,70 @@ button {
 
 .play {
   display: block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.parts {
+  display: flex;
+  flex-direction: column;
+}
+
+.part {
+  align-items: center;
+  display: flex;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.part::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+}
+
+h3 {
+  color: #757575;
+  font-weight: 400;
+}
+
+.meanings {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.meanings-item {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.meanings-item::before {
+  content: url(../../../assets/images/marker.svg);
+  line-height: 0;
+  transform: translateY(10px);
+}
+
+.example {
+  color: #757575;
+  margin-top: 13px;
+}
+
+.nyms {
+  display: flex;
+}
+
+.nyms-list {
+  color: #a445ed;
+  font-weight: 700;
+}
+
+.nyms-item {
+  cursor: pointer;
+}
+
+.nyms-item:hover {
+  text-decoration: underline;
 }

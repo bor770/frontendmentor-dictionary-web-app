@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { BaseComponent } from '../shared/base/base.component';
 import { EntryError, EntryValue } from './entry.model';
+import * as EntryActions from './store/entry.actions';
 import * as EntrySelectors from './store/entry.selectors';
 
 @Component({
@@ -24,6 +25,7 @@ import * as EntrySelectors from './store/entry.selectors';
 export class EntryComponent extends BaseComponent implements OnInit {
   error$: Observable<EntryError>;
   hover = false;
+  nyms = [`synonyms`, `antonyms`];
   value$: Observable<EntryValue>;
   @ViewChild(`audio`) audio: ElementRef;
 
@@ -44,7 +46,11 @@ export class EntryComponent extends BaseComponent implements OnInit {
     this.hover = !this.hover;
   }
 
-  play() {
+  onPlay() {
     this.audio.nativeElement.play();
+  }
+
+  onNymClick(nym: string) {
+    this.store.dispatch(EntryActions.fetch({ word: nym }));
   }
 }
