@@ -41,30 +41,6 @@
             </li>
           </ul>
         </section>
-        <!-- <ng-container *ngrxLet="meaning.synonyms as synonyms">
-          <section *ngIf="synonyms[0]" class="nyms">
-            <h3>Synonyms</h3>
-            <nav>
-              <ul class="nyms-list">
-                <li *ngFor="let synonym of synonyms" class="nyms-item">
-                  {{ synonym }}
-                </li>
-              </ul>
-            </nav>
-          </section>
-        </ng-container>
-        <ng-container *ngrxLet="meaning.antonyms as antonyms">
-          <section *ngIf="antonyms[0]" class="nyms">
-            <h3>Antonyms</h3>
-            <nav>
-              <ul class="nyms-list">
-                <li *ngFor="let antonym of antonyms" class="nyms-item">
-                  {{ antonym }}
-                </li>
-              </ul>
-            </nav>
-          </section>
-        </ng-container> -->
         <ul>
           <li *ngFor="let nym of nyms">
             <ng-container *ngrxLet="meaning[nym] as nyms">
@@ -72,7 +48,13 @@
                 <h3>{{ nym | titlecase }}</h3>
                 <nav>
                   <ul class="nyms-list">
-                    <li *ngFor="let nym of nyms" class="nyms-item">
+                    <li
+                      *ngFor="let nym of nyms"
+                      class="nyms-item"
+                      tabindex="0"
+                      (click)="onNymClick(nym)"
+                      (keyup.enter)="onNymClick(nym)"
+                    >
                       {{ nym }}
                     </li>
                   </ul>
