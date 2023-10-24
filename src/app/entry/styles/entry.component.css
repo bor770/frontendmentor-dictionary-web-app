@@ -1,4 +1,4 @@
-header {
+.entry-header {
   align-items: center;
   display: grid;
   grid-template-areas:
@@ -8,7 +8,7 @@ header {
   row-gap: 8px;
 }
 
-h1 {
+.word {
   grid-area: word;
 }
 
@@ -107,4 +107,24 @@ h3 {
 
 .source-link {
   font-size: 0.87rem;
+}
+
+.error {
+  margin-top: 5.44rem;
+  text-align: center;
+}
+
+.face {
+  font-size: 4rem;
+  margin-bottom: 2.75rem;
+}
+
+.error-title {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  color: #757575;
+  line-height: 133.33%;
 }

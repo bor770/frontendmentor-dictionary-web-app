@@ -8,8 +8,8 @@
   [ngClass]="[observables.scheme, observables.width]"
 >
   <ng-container *ngIf="observables.value as value">
-    <header>
-      <h1>{{ value.word }}</h1>
+    <header class="entry-header">
+      <h1 class="word">{{ value.word }}</h1>
       <span class="phonetic">{{ value.phonetic }}</span>
       <div *ngIf="value.audio as audio" class="audio">
         <audio #audio [src]="audio"></audio>
@@ -78,4 +78,9 @@
       </a>
     </footer>
   </ng-container>
+  <div *ngIf="observables.error as error" class="error">
+    <header class="face">😕</header>
+    <h1 class="error-title">{{ error.title }}</h1>
+    <p class="error-message">{{ error.message }} {{ error.resolution }}</p>
+  </div>
 </article>

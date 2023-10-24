@@ -2,11 +2,11 @@
   font-size: 0.94rem;
 }
 
-.mobile header {
+.mobile .entry-header {
   margin-bottom: 1.81rem;
 }
 
-.mobile h1 {
+.mobile .word {
   font-size: 2rem;
 }
 
