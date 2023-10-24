@@ -65,12 +65,13 @@
         </ul>
       </li>
     </ul>
-    <br />
+    <hr />
     <footer *ngrxLet="value.sourceUrl as source">
-      <h2>Source</h2>
-      <a [href]="source" target="_blank"
-        >{{ source }}
+      <a target="_blank" [href]="source">
+        <h2 class="source">Source</h2>
+        <span class="source-link">{{ source }}</span>
         <img
+          class="new-window-icon"
           src="../../assets/images/icon-new-window.svg"
           alt="New Window Icon"
         />

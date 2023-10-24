@@ -98,3 +98,13 @@ h3 {
 .nyms-item:hover {
   text-decoration: underline;
 }
+
+.source {
+  color: #757575;
+  font-size: 0.87rem;
+  font-weight: 400;
+}
+
+.source-link {
+  font-size: 0.87rem;
+}

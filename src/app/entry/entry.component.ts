@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { BaseComponent } from '../shared/base/base.component';
 import { EntryError, EntryValue } from './entry.model';
-import * as EntryActions from './store/entry.actions';
 import * as EntrySelectors from './store/entry.selectors';
 
 @Component({
@@ -29,6 +30,10 @@ export class EntryComponent extends BaseComponent implements OnInit {
   value$: Observable<EntryValue>;
   @ViewChild(`audio`) audio: ElementRef;
 
+  constructor(private router: Router, public store: Store) {
+    super(store);
+  }
+
   ngOnInit(): void {
     super.ngOnInit();
 
@@ -51,6 +56,6 @@ export class EntryComponent extends BaseComponent implements OnInit {
   }
 
   onNymClick(nym: string) {
-    this.store.dispatch(EntryActions.fetch({ word: nym }));
+    this.router.navigate([nym]);
   }
 }

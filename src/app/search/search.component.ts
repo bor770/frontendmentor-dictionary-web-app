@@ -7,12 +7,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Subscription, distinctUntilChanged, filter } from 'rxjs';
 
 import { BaseComponent } from '../shared/base/base.component';
-import * as EntryActions from '../entry/store/entry.actions';
-import * as EntrySelectors from '../entry/store/entry.selectors';
+import * as RouterSelectors from '../store/router.selectors';
 
 @Component({
   imports: [CommonModule, LetDirective, ReactiveFormsModule],
@@ -36,6 +37,10 @@ export class SearchComponent
   storeSubscription: Subscription;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
 
+  constructor(private router: Router, public store: Store) {
+    super(store);
+  }
+
   ngOnInit(): void {
     super.ngOnInit();
 
@@ -43,10 +48,22 @@ export class SearchComponent
       word: new FormControl(null, Validators.required),
     });
 
+    const form = this.form;
+
+    form.statusChanges
+      .pipe(
+        distinctUntilChanged(),
+        filter((status) => status === `VALID`)
+      )
+      .subscribe(() => {
+        this.formGroupDirective.resetForm(form.value);
+      });
+
     this.storeSubscription = this.store
-      .select(EntrySelectors.selectValue)
-      .subscribe((value) => {
-        this.form.patchValue({ word: value?.word });
+      .select(RouterSelectors.selectUrlWord)
+      // eslint-disable-next-line @ngrx/no-store-subscription
+      .subscribe((word) => {
+        form.patchValue({ word });
       });
   }
 
@@ -55,8 +72,7 @@ export class SearchComponent
     const value = form.value;
 
     if (form.valid) {
-      this.store.dispatch(EntryActions.fetch({ word: value.word }));
-      this.formGroupDirective.resetForm(value);
+      this.router.navigate([value.word]);
     }
   }
 

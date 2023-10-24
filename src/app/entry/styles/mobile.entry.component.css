@@ -47,3 +47,29 @@
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
+
+.mobile hr {
+  margin-bottom: 1.5rem;
+}
+
+.mobile a {
+  align-items: end;
+  display: grid;
+  gap: 8px 9px;
+  grid-template-areas:
+    "h2  .  "
+    "spa img";
+  grid-template-columns: max-content;
+}
+
+.mobile .source {
+  grid-area: h2;
+}
+
+.mobile .source-link {
+  grid-area: spa;
+}
+
+.mobile .new-window-icon {
+  grid-area: img;
+}
