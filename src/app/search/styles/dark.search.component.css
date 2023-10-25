@@ -1,0 +1,7 @@
+.dark .search-box {
+  background: #1f1f1f;
+}
+
+.dark input::placeholder {
+  color: #fff;
+}

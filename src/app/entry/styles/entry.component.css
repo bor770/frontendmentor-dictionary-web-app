@@ -99,10 +99,16 @@ h3 {
   text-decoration: underline;
 }
 
+hr {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
 .source {
   color: #757575;
   font-size: 0.87rem;
   font-weight: 400;
+  text-decoration: underline;
 }
 
 .source-link {

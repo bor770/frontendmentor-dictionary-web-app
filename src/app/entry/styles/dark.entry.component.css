@@ -1,0 +1,11 @@
+.dark .part::after {
+  background: #3a3a3a;
+}
+
+.dark hr {
+  border-color: #3a3a3a;
+}
+
+.dark a {
+  color: #fff;
+}
