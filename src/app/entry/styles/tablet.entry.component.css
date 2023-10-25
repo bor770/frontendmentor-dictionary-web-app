@@ -25,6 +25,10 @@
   margin-bottom: 2.5rem;
 }
 
+.tablet .meanings {
+  padding-left: 1.38rem;
+}
+
 .tablet h3 {
   font-size: 1.25rem;
 }
