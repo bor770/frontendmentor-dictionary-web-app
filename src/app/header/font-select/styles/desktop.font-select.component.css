@@ -1,0 +1,8 @@
+.desktop {
+  gap: 1.12rem;
+}
+
+.desktop .name {
+  font-size: 1.12rem;
+  line-height: 133.33%;
+}

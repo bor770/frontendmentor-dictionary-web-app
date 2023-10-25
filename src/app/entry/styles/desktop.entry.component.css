@@ -1,0 +1,65 @@
+.desktop {
+  font-size: 1.12rem;
+}
+
+.desktop .entry-header {
+  margin-bottom: 2.5rem;
+}
+
+.desktop .word {
+  font-size: 4rem;
+}
+
+.desktop .phonetic {
+  font-size: 1.5rem;
+}
+
+.desktop .parts {
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.desktop .part {
+  font-size: 1.5rem;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.desktop .meanings {
+  padding-left: 1.38rem;
+}
+
+.desktop h3 {
+  font-size: 1.25rem;
+}
+
+.desktop .meaning-heading {
+  margin-bottom: 1.56rem;
+}
+
+.desktop .meanings-item {
+  line-height: 133.33%;
+}
+
+.desktop .nyms {
+  font-size: 1.25rem;
+  gap: 1.37rem;
+  margin-top: 2.5rem;
+}
+
+.desktop hr {
+  margin-bottom: 1.19rem;
+}
+
+.desktop a {
+  align-items: flex-end;
+  display: flex;
+}
+
+.desktop .source {
+  margin-right: 1.25rem;
+}
+
+.desktop .source-link {
+  margin-right: 9px;
+}

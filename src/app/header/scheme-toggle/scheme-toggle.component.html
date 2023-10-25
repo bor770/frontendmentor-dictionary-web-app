@@ -5,12 +5,8 @@
 >
   <img
     alt="Scheme Toggle"
-    [src]="
-      '../../../assets/images/scheme-toggle-' +
-      observables.width +
-      '-' +
-      observables.scheme +
-      '.svg'
-    "
+    [src]="imgSrc(observables.scheme, observables.width)"
+    (mouseenter)="onHover()"
+    (mouseleave)="onHover()"
   />
 </button>

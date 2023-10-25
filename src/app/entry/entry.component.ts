@@ -43,12 +43,12 @@ export class EntryComponent extends BaseComponent implements OnInit {
     this.value$ = store.select(EntrySelectors.selectValue);
   }
 
-  imgSrc() {
-    return `../../assets/images/icon-play${this.hover ? `-hover` : ``}.svg`;
-  }
-
   onHover() {
     this.hover = !this.hover;
+  }
+
+  imgSrc() {
+    return `../../assets/images/icon-play${this.hover ? `-hover` : ``}.svg`;
   }
 
   onPlay() {
