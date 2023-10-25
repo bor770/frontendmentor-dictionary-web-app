@@ -1,0 +1,8 @@
+.tablet {
+  gap: 1.12rem;
+}
+
+.tablet .name {
+  font-size: 1.12rem;
+  line-height: 133.33%;
+}
