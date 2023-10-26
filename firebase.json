@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "dictionary-web-app",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

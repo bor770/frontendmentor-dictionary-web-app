@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "frontendmentor-dictionary-web": {
+      "hosting": {
+        "dictionary-web-app": [
+          "frontendmentor-dictionary-web"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "frontendmentor-dictionary-web"
+  }
+}

@@ -129,6 +129,13 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "dictionary-web-app:build:production"
+          }
         }
       }
     }

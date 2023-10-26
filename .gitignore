@@ -43,3 +43,8 @@ Thumbs.db
 
 dictionary-web-app
 dictionary-web-app-figma
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
