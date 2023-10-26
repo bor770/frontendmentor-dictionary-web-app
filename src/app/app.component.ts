@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { LetDirective } from '@ngrx/component';
 
 import { BaseComponent } from './shared/base/base.component';
@@ -12,7 +11,6 @@ import { SearchComponent } from './search/search.component';
   imports: [
     CommonModule,
     LetDirective,
-    RouterOutlet,
     EntryComponent,
     HeaderComponent,
     SearchComponent,
