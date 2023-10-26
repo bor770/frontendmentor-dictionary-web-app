@@ -7,3 +7,8 @@ const selectState = createFeatureSelector<fromEntry.State>(`entry`);
 export const selectError = createSelector(selectState, (state) => state.error);
 
 export const selectValue = createSelector(selectState, (state) => state.value);
+
+export const selectIsLoading = createSelector(
+  selectState,
+  (state) => state.isLoading
+);

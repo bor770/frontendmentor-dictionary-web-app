@@ -7,10 +7,11 @@ import { Observable } from 'rxjs';
 
 import { BaseComponent } from '../shared/base/base.component';
 import { EntryError, EntryValue } from './entry.model';
+import { SpinnerComponent } from './spinner/spinner.component';
 import * as EntrySelectors from './store/entry.selectors';
 
 @Component({
-  imports: [CommonModule, LetDirective],
+  imports: [CommonModule, LetDirective, SpinnerComponent],
   selector: 'app-entry',
   standalone: true,
   styleUrls: [
@@ -26,6 +27,7 @@ import * as EntrySelectors from './store/entry.selectors';
 export class EntryComponent extends BaseComponent implements OnInit {
   error$: Observable<EntryError>;
   hover = false;
+  isLoading$: Observable<boolean>;
   nyms = [`synonyms`, `antonyms`];
   value$: Observable<EntryValue>;
   @ViewChild(`audio`) audio: ElementRef;
@@ -41,6 +43,7 @@ export class EntryComponent extends BaseComponent implements OnInit {
 
     this.error$ = store.select(EntrySelectors.selectError);
     this.value$ = store.select(EntrySelectors.selectValue);
+    this.isLoading$ = store.select(EntrySelectors.selectIsLoading);
   }
 
   onHover() {

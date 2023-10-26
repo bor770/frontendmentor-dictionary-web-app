@@ -1,86 +1,90 @@
-<article
+<div
   *ngrxLet="{
     error: error$,
+    isLoading: isLoading$,
     scheme: scheme$,
     value: value$,
     width: width$
   } as observables"
   [ngClass]="[observables.scheme, observables.width]"
 >
-  <ng-container *ngIf="observables.value as value">
-    <header class="entry-header">
-      <h1 class="word">{{ value.word }}</h1>
-      <span class="phonetic">{{ value.phonetic }}</span>
-      <div *ngIf="value.audio as audio" class="audio">
-        <audio #audio [src]="audio"></audio>
-        <button
-          (click)="onPlay()"
-          (mouseenter)="onHover()"
-          (mouseleave)="onHover()"
-        >
-          <img class="play" alt="Play Icon" [src]="imgSrc()" />
-        </button>
-      </div>
-    </header>
-    <ul class="parts">
-      <li *ngFor="let meaning of value.meanings">
-        <h2 class="part">{{ meaning.partOfSpeech }}</h2>
-        <section class="meaning">
-          <h3 class="meaning-heading">Meaning</h3>
-          <ul class="meanings">
-            <li
-              *ngFor="let definition of meaning.definitions"
-              class="meanings-item"
-            >
-              <div class="meanings-definition">
-                <p class="definition">{{ definition.definition }}</p>
-                <p *ngIf="definition.example as example" class="example">
-                  "{{ example }}"
-                </p>
-              </div>
+  <app-spinner *ngIf="observables.isLoading"></app-spinner>
+  <article *ngIf="!observables.isLoading">
+    <ng-container *ngIf="observables.value as value">
+      <header class="entry-header">
+        <h1 class="word">{{ value.word }}</h1>
+        <span class="phonetic">{{ value.phonetic }}</span>
+        <div *ngIf="value.audio as audio" class="audio">
+          <audio #audio [src]="audio"></audio>
+          <button
+            (click)="onPlay()"
+            (mouseenter)="onHover()"
+            (mouseleave)="onHover()"
+          >
+            <img class="play" alt="Play Icon" [src]="imgSrc()" />
+          </button>
+        </div>
+      </header>
+      <ul class="parts">
+        <li *ngFor="let meaning of value.meanings">
+          <h2 class="part">{{ meaning.partOfSpeech }}</h2>
+          <section class="meaning">
+            <h3 class="meaning-heading">Meaning</h3>
+            <ul class="meanings">
+              <li
+                *ngFor="let definition of meaning.definitions"
+                class="meanings-item"
+              >
+                <div class="meanings-definition">
+                  <p class="definition">{{ definition.definition }}</p>
+                  <p *ngIf="definition.example as example" class="example">
+                    "{{ example }}"
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <ul>
+            <li *ngFor="let nym of nyms">
+              <ng-container *ngrxLet="meaning[nym] as nyms">
+                <section *ngIf="nyms.length" class="nyms">
+                  <h3>{{ nym | titlecase }}</h3>
+                  <nav>
+                    <ul class="nyms-list">
+                      <li
+                        *ngFor="let nym of nyms"
+                        class="nyms-item"
+                        tabindex="0"
+                        (click)="onNymClick(nym)"
+                        (keyup.enter)="onNymClick(nym)"
+                      >
+                        {{ nym }}
+                      </li>
+                    </ul>
+                  </nav>
+                </section>
+              </ng-container>
             </li>
           </ul>
-        </section>
-        <ul>
-          <li *ngFor="let nym of nyms">
-            <ng-container *ngrxLet="meaning[nym] as nyms">
-              <section *ngIf="nyms[0]" class="nyms">
-                <h3>{{ nym | titlecase }}</h3>
-                <nav>
-                  <ul class="nyms-list">
-                    <li
-                      *ngFor="let nym of nyms"
-                      class="nyms-item"
-                      tabindex="0"
-                      (click)="onNymClick(nym)"
-                      (keyup.enter)="onNymClick(nym)"
-                    >
-                      {{ nym }}
-                    </li>
-                  </ul>
-                </nav>
-              </section>
-            </ng-container>
-          </li>
-        </ul>
-      </li>
-    </ul>
-    <hr />
-    <footer *ngrxLet="value.sourceUrl as source">
-      <a target="_blank" [href]="source">
-        <h2 class="source">Source</h2>
-        <span class="source-link">{{ source }}</span>
-        <img
-          class="new-window-icon"
-          src="../../assets/images/icon-new-window.svg"
-          alt="New Window Icon"
-        />
-      </a>
-    </footer>
-  </ng-container>
-  <div *ngIf="observables.error as error" class="error">
-    <header class="face">😕</header>
-    <h1 class="error-title">{{ error.title }}</h1>
-    <p class="error-message">{{ error.message }} {{ error.resolution }}</p>
-  </div>
-</article>
+        </li>
+      </ul>
+      <hr />
+      <footer *ngrxLet="value.sourceUrl as source">
+        <a target="_blank" [href]="source">
+          <h2 class="source">Source</h2>
+          <span class="source-link">{{ source }}</span>
+          <img
+            class="new-window-icon"
+            src="../../assets/images/icon-new-window.svg"
+            alt="New Window Icon"
+          />
+        </a>
+      </footer>
+    </ng-container>
+    <div *ngIf="observables.error as error" class="error">
+      <header class="face">😕</header>
+      <h1 class="error-title">{{ error.title }}</h1>
+      <p class="error-message">{{ error.message }} {{ error.resolution }}</p>
+    </div>
+  </article>
+</div>
