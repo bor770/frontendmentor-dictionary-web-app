@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 import { Scheme } from '../scheme/scheme.model';
 import { Width } from '../layout/layout.model';
 import * as FontSelectors from '../font/store/font.selectors';
-import * as SchemeSelectors from '../scheme/store/scheme.selectors';
 import * as LayoutSelectors from '../layout/store/layout.selectors';
+import * as SchemeSelectors from '../scheme/store/scheme.selectors';
 
 @Component({
   imports: [CommonModule],
