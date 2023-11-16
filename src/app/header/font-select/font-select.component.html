@@ -1,7 +1,7 @@
 <button
   *ngrxLet="{ font: font$, fontName: fontName$, width: width$ } as observables"
-  [cdkMenuTriggerFor]="menu"
   [cdkMenuPosition]="position"
+  [cdkMenuTriggerFor]="menu"
   class="container"
   [ngClass]="observables.width"
 >
